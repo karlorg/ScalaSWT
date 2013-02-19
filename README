@@ -1,0 +1,1 @@
+Inspired by [Glimmer](http://eclipse.dzone.com/articles/an-introduction-glimmer) and [Making SWT shine with Scala](http://johlrogge.wordpress.com/2009/01/06/making-swt-shine-with-scala/) this open source library provides a DSL for creating SWT user interfacings in Scala. It trys to be shorter and more readable than plain Scala.

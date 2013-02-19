@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"path": "/"
+		},
+		{
+			"path": "src/main/scala/de/mritter/swt/dsl"
+		}
+	]
+}
