@@ -9,7 +9,7 @@ trait Widgets extends WidgetProperties {
 		setups.foreach(_(w))
 	}
 
-	def button = createWidget(new Button(_, SWT.NONE))_
+	def button = createWidget(new Button(_, SWT.PUSH))_
 
 	def checkbox = createWidget(new Button(_, SWT.CHECK))_
 
@@ -67,13 +67,13 @@ trait Widgets extends WidgetProperties {
 
 	def slider = createWidget(new Slider(_, SWT.NONE))_
 
-	def spinner = createWidget(new Spinner(_, SWT.NONE))_
+	def spinner = createWidget(new Spinner(_, SWT.BORDER))_
 
 	def tabFolder = createWidget(new TabFolder(_, SWT.NONE))_
 
 	// def tabItem = createWidget(new TabItem(_, SWT.NONE))_ // needs TabFolder
 
-	def table = createWidget(new Table(_, SWT.NONE))_
+	def table = createWidget(new Table(_, SWT.BORDER))_
 
 	// def tableColumn = createWidget(new TableColumn(_, SWT.NONE))_ // needs Table
 
@@ -81,7 +81,7 @@ trait Widgets extends WidgetProperties {
 
 
 
-	def edit = createWidget(new Text(_, SWT.NONE))_
+	def edit = createWidget(new Text(_, SWT.BORDER))_
 
 	def editfield = createWidget(new Text(_, SWT.MULTI))_
 

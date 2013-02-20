@@ -2,6 +2,8 @@ package de.mritter.swt.dsl.widgets
 
 import org.eclipse.swt.widgets.{Control, List}
 import org.eclipse.swt.SWT
+import org.eclipse.swt.graphics.{Color, RGB}
+import org.eclipse.jface.resource.{JFaceResources, LocalResourceManager}
 
 trait WidgetProperties {
 
@@ -49,6 +51,19 @@ trait WidgetProperties {
 
 	def selection(start: => Int, end: => Int)(target: List) = {
 		target.setSelection(start, end)
+	}
+
+
+	def background(red: Int, green: Int, blue: Int)(target: Control) = {
+		val resManager = new LocalResourceManager(JFaceResources.getResources(), target)
+		val color = resManager.createColor(new RGB(red, green, blue))
+		target.setBackground(color)
+	}
+
+	def foreground(red: Int, green: Int, blue: Int)(target: Control) = {
+		val resManager = new LocalResourceManager(JFaceResources.getResources(), target)
+		val color = resManager.createColor(new RGB(red, green, blue))
+		target.setForeground(color)
 	}
 
 	// Visibility
