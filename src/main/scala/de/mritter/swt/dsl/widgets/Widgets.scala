@@ -11,6 +11,10 @@ trait Widgets extends WidgetProperties {
 
 	def button = createWidget(new Button(_, SWT.NONE))_
 
+	def checkbox = createWidget(new Button(_, SWT.CHECK))_
+
+	def radio = createWidget(new Button(_, SWT.RADIO))_
+
 	def canvas = createWidget(new Canvas(_, SWT.NONE))_
 
 	// def caret = createWidget(new Caret(_, SWT.NONE))_ // needs Canvas
@@ -19,7 +23,6 @@ trait Widgets extends WidgetProperties {
 
 	def combo = createWidget(new Combo(_, SWT.NONE))_
 
-	// def composite(setups: Composite => Unit*) = createWidget(new Composite(_, SWT.NONE))(setups: _*)_
 	def composite = createWidget(new Composite(_, SWT.NONE))_
 
 	def coolBar = createWidget(new CoolBar(_, SWT.NONE))_

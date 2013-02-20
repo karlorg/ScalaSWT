@@ -20,6 +20,15 @@ trait GridCell {
 		target.setLayoutData(data)
 	}
 
+	def ignoreForLayout(target: Control) = withLayoutData { layoutData =>
+		layoutData.exclude = true
+	}_
+
+	def horizontalAndVertical(settings: FGridData => Unit*) = {
+		horizontal(settings: _*)
+		vertical(settings: _*)
+	}
+
 	def horizontal(settings: FGridData => Unit*) = withLayoutData { layoutData =>
 		val gd = new FGridData(layoutData.horizontalAlignment=_,
 								layoutData.grabExcessHorizontalSpace=_,
@@ -36,7 +45,11 @@ trait GridCell {
 		settings.foreach(_(gd))
 	}_
 
-	def beginning(gd: FGridData) = {
+	def top(gd: FGridData) = {
+		gd.align(GridData.BEGINNING)
+	}
+
+	def left(gd: FGridData) = {
 		gd.align(GridData.BEGINNING)
 	}
 
@@ -44,7 +57,11 @@ trait GridCell {
 		gd.align(GridData.CENTER)
 	}
 
-	def end(gd: FGridData) = {
+	def bottom(gd: FGridData) = {
+		gd.align(GridData.END)
+	}
+
+	def right(gd: FGridData) = {
 		gd.align(GridData.END)
 	}
 

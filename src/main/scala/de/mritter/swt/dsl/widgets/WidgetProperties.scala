@@ -13,6 +13,21 @@ trait WidgetProperties {
 		target.setText(txt)
 	}
 
+	def focus(target: Control) = {
+		target.setFocus();
+	}
+
+	def toolTip(txt: String)(target: Control) = {
+		target.setToolTipText(txt)
+	}
+
+	def minimum[T <: {def setMinimum(n: Int)}](min: => Int)(target: T) = {
+		target.setMinimum(min)
+	}
+
+	def maximum[T <: {def setMaximum(n: Int)}](max: => Int)(target: T) = {
+		target.setMaximum(max)
+	}
 
 	// Selecting
 
@@ -20,27 +35,20 @@ trait WidgetProperties {
 		target.setSelection(true)
 	}
 
-	def selectedIndex[T <: {def setSelection(i: Int)}](index: => Int)(target: T) {
+	def selectedIndex[T <: {def setSelection(n: Int)}](index: => Int)(target: T) = {
 		target.setSelection(index)
 	}
 	
-	def selectedIndex(indices: => Array[Int])(target: List) {
+	def selectedIndex(indices: => Array[Int])(target: List) = {
 		target.setSelection(indices)
+	}
+
+	def selection[T <: {def setSelection(n: Int)}](selection: => Int)(target: T) = {
+		target.setSelection(selection)
 	}
 
 	def selection(start: => Int, end: => Int)(target: List) = {
 		target.setSelection(start, end)
-	}
-
-
-
-
-	def focus(target: Control) = {
-		target.setFocus();
-	}
-
-	def toolTip(txt: String)(target: Control) = {
-		target.setToolTipText(txt)
 	}
 
 	// Visibility
@@ -65,6 +73,20 @@ trait WidgetProperties {
 
 	def right(target: Control) = {
 		target.setOrientation(SWT.RIGHT)
+	}
+
+	// Alignment
+
+	def alignCenter[T <: {def setAlignment(a: Int)}](target: T) = {
+		target.setAlignment(SWT.CENTER)
+	}
+
+	def alignLeft[T <: {def setAlignment(a: Int)}](target: T) = {
+		target.setAlignment(SWT.LEFT)
+	}
+
+	def alignRight[T <: {def setAlignment(a: Int)}](target: T) = {
+		target.setAlignment(SWT.RIGHT)
 	}
 
 	// Enabled

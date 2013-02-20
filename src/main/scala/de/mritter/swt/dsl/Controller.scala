@@ -3,7 +3,7 @@ package de.mritter.swt.dsl
 import org. eclipse.swt.widgets.Shell
 
 class Controller(val shell: Shell) {
-    def run() {
+    def open() {
 	    val display = shell.getDisplay
         
         shell.pack();
