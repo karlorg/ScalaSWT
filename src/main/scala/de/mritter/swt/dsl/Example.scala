@@ -40,7 +40,7 @@ object Example {
 					title("Experience"),
 					columnLayout(),
 					horizontalAndVertical(fill, grabExcessSpace),
-					spinner(selection(5), label(text("years")), modify( (event, source) => {
+					spinner(selection(5), label(text("years")), onModify( (event, source) => {
 						saveButton.setEnabled(true)
 
 						saveButton.setText("Save")
@@ -59,7 +59,7 @@ object Example {
 					title("Save"),
 					horizontal(right, grabExcessSpace),
 					vertical(center, grabExcessSpace),
-					mouseUp((event, button) => {
+					onMouseUp((event, button) => {
 						button.setEnabled(false)
 						button.setText("Done")
 					})
@@ -68,7 +68,7 @@ object Example {
 					title("Close"),
 					horizontal(left, grabExcessSpace),
 					vertical(center, grabExcessSpace),
-					click( (e, s) => {
+					onClick( (e, s) => {
 						myShell.dispose
 					})
 				)
