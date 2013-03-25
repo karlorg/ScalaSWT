@@ -24,9 +24,9 @@ trait GridCell {
 		layoutData.exclude = true
 	}_
 
-	def horizontalAndVertical(settings: FGridData => Unit*) = {
-		horizontal(settings: _*)
-		vertical(settings: _*)
+	def horizontalAndVertical(settings: FGridData => Unit*)(target: Control) = {
+		horizontal(settings: _*)(target)
+		vertical(settings: _*)(target)
 	}
 
 	def horizontal(settings: FGridData => Unit*) = withLayoutData { layoutData =>

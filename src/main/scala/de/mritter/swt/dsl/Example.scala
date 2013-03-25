@@ -18,7 +18,6 @@ object Example {
 					title("Name"),
 					gridLayout(columns(2)),
 					horizontalAndVertical(fill, grabExcessSpace),
-					vertical(fill, grabExcessSpace),
 					label(text("First")), edit(text("Bullet")),
 					label(text("Last")), edit(text("Tooth"))
 				),

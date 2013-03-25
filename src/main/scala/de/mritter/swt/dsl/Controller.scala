@@ -1,6 +1,6 @@
 package de.mritter.swt.dsl
 
-import org. eclipse.swt.widgets.Shell
+import org.eclipse.swt.widgets.Shell
 
 class Controller(val shell: Shell) {
     def open() {
