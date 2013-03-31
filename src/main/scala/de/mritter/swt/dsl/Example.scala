@@ -12,8 +12,7 @@ object Example {
 		shell(
 			(myShell = _),
 			title("User Profile"),
-			composite(
-				gridLayout(columns(2)),
+			composite.gridLayout(columns(2))(
 				group(
 					title("Name"),
 					gridLayout(columns(2)),

@@ -2,9 +2,38 @@ package de.mritter.swt.dsl.widgets
 
 import org.eclipse.swt.widgets._
 import org.eclipse.swt.SWT
+import de.mritter.swt.dsl.layout.HasFillLayout
+import de.mritter.swt.dsl.layout.HasGridLayout
+import de.mritter.swt.dsl.layout.HasFormLayout
+import de.mritter.swt.dsl.layout.HasRowLayout
+import org.eclipse.swt.layout.FillLayout
+import org.eclipse.swt.layout.FormLayout
+import org.eclipse.swt.layout.GridLayout
+import org.eclipse.swt.layout.RowLayout
+import de.mritter.swt.dsl.layout.AwaitingLayout
+import de.mritter.swt.dsl.layout.InGridLayout
+import de.mritter.swt.dsl.layout.InFillLayout
 
 trait Widgets extends WidgetProperties {
-	private def createWidget[T](factory: Composite => T)(setups: T => Unit*)(parent: Composite) = {
+	private def createWidget[T](factory: Composite => T)
+	                            (setups: T => Unit*)
+	                            (parent: Composite) = {
+		val w = factory(parent)
+		setups.foreach(_(w))
+	}
+	
+	private def createFillWidget[T <: InFillLayout]
+			(factory: Composite with HasFillLayout => T)
+			(setups: T => Unit*)
+			(parent: Composite with HasFillLayout) = {
+		val w = factory(parent)
+		setups.foreach(_(w))
+	}
+	
+	private def createGridWidget[T <: InGridLayout]
+			(factory: Composite with HasGridLayout => T)
+			(setups: T => Unit*)
+			(parent: Composite with HasGridLayout) = {
 		val w = factory(parent)
 		setups.foreach(_(w))
 	}
@@ -23,7 +52,13 @@ trait Widgets extends WidgetProperties {
 
 	def combo = createWidget(new Combo(_, SWT.NONE))_
 
-	def composite = createWidget(new Composite(_, SWT.NONE))_
+	def composite = {
+		new AwaitingLayout[Composite](
+				new Composite(_, SWT.NONE) with HasFillLayout
+		                                   with HasFormLayout
+		                                   with HasGridLayout
+		                                   with HasRowLayout )
+	}
 
 	def coolBar = createWidget(new CoolBar(_, SWT.NONE))_
 
@@ -43,7 +78,17 @@ trait Widgets extends WidgetProperties {
 
 	// def fontDialog = createWidget(new FontDialog(_, SWT.NONE))_ // needs Shell
 
-	def group = createWidget(new Group(_, SWT.NONE))_
+	// def group = createWidget(new Group(_, SWT.NONE))_
+	
+	def group(setups: Group with InFillLayout => Unit*)
+             (parent: Composite with HasFillLayout) = {
+		createFillWidget(new Group(_, SWT.NONE) with InFillLayout)(setups:_*)(parent)
+	}
+
+	def group(setups: Group with InGridLayout => Unit*)
+             (parent: Composite with HasGridLayout) = {
+		createGridWidget(new Group(_, SWT.NONE) with InGridLayout)(setups:_*)(parent)
+	}
 
 	// def item = createWidget(new Item(_, SWT.NONE))_ // needs Widgelt
 

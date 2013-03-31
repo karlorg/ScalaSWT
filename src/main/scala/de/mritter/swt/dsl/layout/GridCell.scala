@@ -24,7 +24,7 @@ trait GridCell {
 		layoutData.exclude = true
 	}_
 
-	def horizontalAndVertical(settings: FGridData => Unit*)(target: Control) = {
+	def horizontalAndVertical(settings: FGridData => Unit*)(target: Control with InGridLayout) = {
 		horizontal(settings: _*)(target)
 		vertical(settings: _*)(target)
 	}
